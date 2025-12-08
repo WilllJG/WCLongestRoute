@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Who has the longest route to the World Cup</title>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: "Merriweather", "Merriweather", "Book Antiqua", serif;
+      background: white;
+      color: #222;
+    }
+
+    a:link {
+      color: #005689;
+    }
+
+    .normal-content {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 10rem 10rem;   /* wider left/right margins */
+        line-height: 1.8;
+    }
+
+    /* -----------------------------
+       HEADER SECTION (NORMAL FLOW)
+       ----------------------------- */
+
+    .content-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 3rem;   /* wider side margins */
+    background: white;
+    }
+    
+
+    .content-section h1, .content-section h2 {
+      margin-bottom: 1rem;
+    }
+
+    .content-section p {
+      max-width: 700px;
+      margin-bottom: 1.5rem;
+    }
+
+    .content-with-image {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 3rem;   /* also wider margins */
+    }
+
+    .side-text {
+    max-width: 600px;
+    transform: none;
+    opacity: 1;
+    box-shadow: none;
+    padding: 0;
+    background: none;
+    border-radius: 0;
+    }
+
+    /* large image on the right */
+    .image {
+    flex: 1;                /* image takes remaining space */
+    display: flex;
+    justify-content: flex-end;
+    }
+
+    .image img {
+    width: 500px;           /* <<< controls final image size */
+    height: auto;
+    display: block;
+    border-radius: 0;       /* sharp edges */
+    }
+
+    .image .caption {
+    display: block;
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 0.5rem;
+    }
+
+    .normal-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 1rem 1rem;   /* wider left/right margins */
+    }
+
+    /* ------------------------------------
+       SCROLLYTELLING WRAPPER IN NORMAL FLOW
+       ------------------------------------ */
+    .scrolly-wrapper {
+    width: 100%;
+    background: white;   /* makes sides white */
+    }
+
+    /* ------------------------------------
+       STICKY IMAGE CONTAINER (THE KEY FIX)
+       ------------------------------------ */
+    .image-container {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .image-container img {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: contain;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+
+    .image-container img.active {
+      opacity: 1;
+    }
+
+    .image-wrapper {
+    max-width: 1200px;      /* controls width of the “frame” */
+    margin: 0 auto;         /* centers the image */
+    padding: 0 2rem;        /* side margins (white space) */
+    height: 100vh;          /* full viewport height */
+    background: white;      /* white margins on sides */
+    position: sticky;
+    top: 0;
+    }
+
+
+    /* ------------------------------------
+       STORY SECTIONS
+       ------------------------------------ */
+    section.story {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 0 10%;
+    }
+
+    .story.left {
+    justify-content: flex-start;   /* text on the LEFT */
+    }
+
+    .story.right {
+    justify-content: flex-end;     /* text on the RIGHT */
+    }
+
+    .text-box {
+      background: rgba(255,255,255,0.92);
+      padding: 2rem 2rem;
+      border-radius: 12px;
+      max-width: 400px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+      opacity: 0;
+      transform: translateX(80px);
+      transition: all 0.7s ease;
+      line-height: 1.8
+    }
+
+    .text-box h2 {
+      font-size: 1.2rem;   /* try 1.2–1.6rem depending on taste */
+      margin-bottom: 0.5rem;
+    }
+
+    .text-box.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* -----------------------------
+       END MARKER (unsticks images)
+       ----------------------------- */
+    .scrolly-end {
+      height: 100vh;
+      background: transparent;
+    }
+
+  </style>
+
+</head>
+<body>
+
+  <!-- HEADER (NORMAL FLOW) -->
+<section class="content-section normal-content">
+  <section class="content-section">
+    <h1>Who has the longest road to the World Cup final?</h1>
+    <p><i>Teams will have to travel at least 5,000km on the way to New York, new analysis finds.</i>
+    </p>
+    <p size = 1><b>Will Grimond</b></p>
+  </section>
+
+  <div class = "content-section">One of the standout features of this summer's tournament are the distances involved, with the competition taking place across three massive countries. For all the criticisms of the 2022 World Cup, it was staged in an area the size of Delaware: 2026 will be one of the most geographically diverse tournaments ever. 
+    <br><br>This has created a logistical headache for coaches and staff, who will have to deal with frequent flights and rapidly changing plans. England manager Thomas Tuchel has <a href = "https://www.bbc.co.uk/sport/football/articles/cx2dxqzxy2ro">already been complaining</a> about the impact of travel on his squad, particularly between areas with different climates. Players will be playing an extra game this tournament, and more travel could mean more fatigue and injuries.
+    <br><br>This also ramps up the cost for fans: on top of <a href = "https://www.nytimes.com/athletic/6870859/2025/12/08/world-cup-2026-tickets-resale-price/">eye-watering ticket prices</a>, just getting around North America is going to be incredibly costly, especially with last-minute spikes in demand.
+  </div>
+
+  <div class="content-section content-with-image">
+        <div class="side-text">
+        And finally, there is the environmental impact of all this moving about, especially apparent in a continent feeling the effects of climate change. By some calculations, <a href="https://carboncopy.info/dangerous-heat-escalating-drought-in-north-america-a-threat-for-2026-fifa-world-cup-report/">10 out of 16</a> of the stadiums are in areas at risk of dangerously high temperatures, and states such as California and Florida regularly suffer from extreme weather events. One venue for this World Cup, Los Angeles' SoFi stadium, is less than 25 kilometres from the site of January’s devastating wildfires.
+        </div>
+
+        <div class="image">
+            <img src="https://i.ibb.co/CpS46kcy/Fire-Stadium.png" alt="Stadium">
+        </div>
+    </div>
+
+<div class = "content-section">
+There are obvious advantages to travelling as little as possible this tournament. But who has the longest route to New York?
+</div>
+
+</section>
+  <!-- -----------------------------
+       SCROLLYTELLING REGION
+       ----------------------------- -->
+  <div class="scrolly-wrapper">
+
+    <!-- STICKY IMAGE CONTAINER -->
+    <div class="image-wrapper">
+        <div class="image-container">
+        <img src="https://i.ibb.co/zHGrWVkf/No-highlights.png" class="active" />
+        <img src="https://i.ibb.co/jvR6S20Z/Germany.png" />
+        <img src="https://i.ibb.co/mFXZ4JYK/Median.png" />
+        <img src="https://i.ibb.co/zhjWK9D4/England-Shortest-Route-Stages.png" />
+        <img src="https://i.ibb.co/SDzfjxp7/England-Shortest-Route-Stages.png" />
+        <img src="https://i.ibb.co/s94MSfNc/Mexico.png" />
+        <img src="https://i.ibb.co/1fzbJgr2/Mexico-Route-1-Stages.png" />
+        <img src="https://i.ibb.co/99JH4x7w/Longest-Route.png" />
+        <img src="https://i.ibb.co/N29yMKLJ/Longest-Route.png" />
+        <img src="https://i.ibb.co/N29yMKLJ/Longest-Route.png" />
+        <img src="https://i.ibb.co/Z9qTVcP/Group-Section.png" />
+        <img src="https://i.ibb.co/Y4RBjF1N/Longest-Route-QSF-Section.png" />
+        </div>
+    </div>
+
+    <!-- TEXT PANELS -->
+    <section class="story right">
+      <div class="text-box">
+        <p>The tournament’s expansion to 48 teams – and FIFA’s complex way of placing third place finishers in the group stage – means there are a massive number of combinations of venues a team could play at on the way to the final.<br><br>In total there are <b>256</b> different paths.</p>
+      </div>
+    </section>
+
+    <section class="story right">
+      <div class="text-box">
+        <p>Teams in Group E, such as <b>Germany</b>, have eight different routes to the final.</p>
+      </div>
+    </section>
+
+    <section class="story right">
+      <div class="text-box">
+        <p><b>England</b> has just three, making planning a little easier. However, each of these are above the average length (<b>10,034km</b>) for the tournament – meaning a longer road than some of their opponents.</p>
+      </div>
+    </section>
+
+    <section class="story left">
+      <div class="text-box">
+        <p>Winning Group A would give England their shortest possible path. <br><br>They would still face a journey of more than 10,000km, with games in Mexico City and Miami, which will be sweltering in July.</p>
+      </div>
+    </section>
+
+    <section class="story left">
+      <div class="text-box">
+        <p>Finishing third in their group, the Three Lions would have to complete a round trip to Vancouver from Kansas City early in the knockouts – an 8 hour round trip.<br><br>Should they fly every leg, an England die-hard would produce around <b>1,800kg</b> of CO2 following the team.</p>
+      </div>
+    </section>
+
+    <section class="story right">
+      <div class="text-box">
+        <p>Other teams have it easier, at least where distances are concerned.<br><br>If they can top their group, co-hosts <b>Mexico</b> could have the shortest possible route of the tournament.</p>
+      </div>
+    </section>
+
+    <section class="story left">
+      <div class="text-box">
+        <p>This would allow them to effectively set up shop in their capital until the quarter finals.</p>
+      </div>
+    </section>
+
+    <section class="story left">
+      <div class="text-box">
+        <p>But who has the longest journey?</p>
+      </div>
+    </section>
+
+    <section class="story left">
+      <div class="text-box">
+        <p>Well, we don’t actually know just yet.<br><br>It’s open to the winners of UEFA play-off D, which includes <b>Ireland, Denmark, Czechia, and North Macedonia</b>.</p>
+      </div>
+    </section>
+
+    <section class="story left">
+      <div class="text-box">
+       <p>If they finish second in their group, this team could face a trip of <b>16,560 km</b>.<br><br>This is the equivalent of flying from New York to Melbourne, and would produce more than <b>2,500kg of CO2</b> per traveller.</p>
+      </div>
+    </section>
+
+    <section class="story left">
+      <div class="text-box">
+        <p>The trip is made especially long by a Mexican double-header (via an 8 hour return trip to Georgia) for their group matches.</p>
+      </div>
+    </section>
+
+    <section class="story left">
+      <div class="text-box">
+        <p>If they go the distance, this team – or another quarter finalist – will then have a Boston-New York trip in the closing stages, with a short (4,800km) detour to Dallas Texas.</p>
+      </div>
+    </section>
+
+
+    <!-- END MARKER TO UN-STICK THE IMAGE -->
+    <div class="scrolly-end"></div>
+  </div>
+
+  <!-- ======================================
+       NORMAL CONTENT BELOW — NO OVERLAP
+       ====================================== -->
+<section class="content-section normal-content">
+    <br>
+    <br>
+    <div class = "content-section">
+        <h2>Some further ideas:</h2>
+        <br>
+        <ul>
+            <li>Building in some interactivity and movement – could do with more interactive elements, or maybe even some sort of dashboard/game?</li>
+            <br>
+            <li>Which team has the shortest route on average? What are the routes like for the main contenders?</li>
+            <br>
+            <li>Actual team distances – once we know where their camps are, we might be able to look at how far each team will have to travel.</li>
+            <br>
+            <li>Temperature differentials – who has it worse in terms of average summer temperatures? How similar are these to their home country?</li>
+            <br>
+            <li>Fan costs – who has the most expensive route? Can we combine with other expense data (e.g. hotels)?</li>
+        </ul>
+    </div>
+</section>
+
+  <script>
+    const images = document.querySelectorAll('.image-container img');
+    const storySections = document.querySelectorAll('section.story');
+
+    // Fade + text reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const index = [...storySections].indexOf(entry.target);
+        if (entry.isIntersecting) {
+          images.forEach((img, i) => img.classList.toggle('active', i === index));
+          entry.target.querySelector('.text-box').classList.add('visible');
+        }
+      });
+    }, { threshold: 0.6 });
+
+    storySections.forEach(sec => observer.observe(sec));
+  </script>
+
+</body>
+</html>
